@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Transparent Login Form UI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <div class="bg-img">
+      <div class="content">
+        <header id="form-header">Login Form</header>
+        <form id="login-form" action="#" method="POST">
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input type="text" required placeholder="Email or Phone">
+          </div>
+          <div class="field space">
+            <span class="fa fa-lock"></span>
+            <input type="password" class="pass-key" required placeholder="Password">
+            <span class="show">SHOW</span>
+          </div>
+          <div class="pass">
+            <a href="#">Forgot Password?</a>
+          </div>
+          <div class="field">
+            <input type="submit" value="LOGIN">
+          </div>
+        </form>
+        <form id="signup-form" action="#" method="POST" style="display: none;">
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input type="text" required placeholder="Name">
+          </div>
+          <div class="field space">
+            <span class="fa fa-envelope"></span>
+            <input type="email" required placeholder="Email">
+          </div>
+          <div class="field space">
+            <span class="fa fa-lock"></span>
+            <input type="password" required placeholder="Password">
+          </div>
+          <div class="field">
+            <span class="fa fa-lock"></span>
+            <input type="password" required placeholder="Confirm Password">
+          </div>
+          <div class="field space">
+            <input type="submit" value="SIGN UP">
+          </div>
+        </form>
+        <div class="login">Or login with</div>
+        <div class="links">
+          <a href="https://www.facebook.com/login.php" target="_blank" class="facebook">
+            <i class="fab fa-facebook-f"><span>Facebook</span></i>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" class="instagram">
+            <i class="fab fa-instagram"><span>Instagram</span></i>
+          </a>
+        </div>
+        <div class="signup">Don't have an account?
+          <a href="#" id="toggle-signup">Signup Now</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const loginForm = document.getElementById('login-form');
+      const signupForm = document.getElementById('signup-form');
+      const formHeader = document.getElementById('form-header');
+      const toggleSignup = document.getElementById('toggle-signup');
+
+      // Function to toggle between login and signup forms
+      toggleSignup.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (loginForm.style.display === 'block') {
+          loginForm.style.display = 'none';
+          signupForm.style.display = 'block';
+          formHeader.textContent = 'Signup Form';
+          toggleSignup.textContent = 'Back to Login';
+        } else {
+          loginForm.style.display = 'block';
+          signupForm.style.display = 'none';
+          formHeader.textContent = 'Login Form';
+          toggleSignup.textContent = 'Signup Now';
+        }
+      });
+
+      // Toggle password visibility
+      const pass_field = document.querySelector('.pass-key');
+      const showBtn = document.querySelector('.show');
+      showBtn.addEventListener('click', function(){
+        if(pass_field.type === "password"){
+          pass_field.type = "text";
+          showBtn.textContent = "HIDE";
+          showBtn.style.color = "#3498db";
+        }else{
+          pass_field.type = "password";
+          showBtn.textContent = "SHOW";
+          showBtn.style.color = "#222";
+        }
+      });
+    </script>
+  </body>
+</html>
